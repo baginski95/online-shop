@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Models
 {
-    public class MockProductRepository
+    public class MockProductRepository : IProductRepository
     {
         private readonly ICategoryRepository _categoryRepository = new MockCategoryRepository();
 
@@ -25,5 +25,4 @@ namespace OnlineShop.Models
             return AllProducts.FirstOrDefault(p => p.ProductId == productId);
         }
     }
-}
 }

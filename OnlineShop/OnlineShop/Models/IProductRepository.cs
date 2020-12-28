@@ -7,8 +7,8 @@ namespace OnlineShop.Models
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> AllProduct { get; }
+        IEnumerable<Product> AllProducts { get; }
         IEnumerable<Product> ProductsOfTheWeek { get; }
-        Product GetPieById(int productId);
+        Product GetProductById(int productId);
     }
 }
