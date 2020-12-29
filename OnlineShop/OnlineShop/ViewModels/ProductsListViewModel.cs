@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.ViewModels
 {
-    public class ProductListViewModel
+    public class ProductsListViewModel
     {
         public IEnumerable<Product> Products { get; set; }
         public string CurrentCategory { get; set; }

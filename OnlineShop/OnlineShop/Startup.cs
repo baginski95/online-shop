@@ -32,7 +32,7 @@ namespace OnlineShop
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

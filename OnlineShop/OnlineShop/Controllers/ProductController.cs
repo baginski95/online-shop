@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Models;
+using OnlineShop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,11 @@ namespace OnlineShop.Controllers
 
         public ViewResult List()
         {
-            return View(_productRepoitory.AllProducts);
+            var productsListViewModel = new ProductsListViewModel();
+            productsListViewModel.Products = _productRepoitory.AllProducts;
+
+            productsListViewModel.CurrentCategory = "Premium products";
+            return View(productsListViewModel);
         }
     }
 }
