@@ -27,8 +27,8 @@ namespace OnlineShop
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IProductRepository, MockProductRepository>();
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddControllersWithViews();
 
         }
