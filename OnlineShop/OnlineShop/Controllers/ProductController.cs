@@ -26,5 +26,13 @@ namespace OnlineShop.Controllers
             productsListViewModel.CurrentCategory = "Premium products";
             return View(productsListViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var product = _productRepoitory.GetProductById(id);
+            if (product == null)
+                return NotFound();
+            return View(product);
+        }
     }
 }
