@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using OnlineShop.Models;
 
-namespace BethanysPieShop.Models
+namespace OnlineShop.Models
 {
     public class ShoppingCart
     {
@@ -40,7 +39,7 @@ namespace BethanysPieShop.Models
         {
             var shoppingCartItem =
                     _appDbContext.ShoppingCartItems.SingleOrDefault(
-                        s => s.Product.ProducteId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
+                        s => s.Product.ProductId == product.ProductId && s.ShoppingCartId == ShoppingCartId);
 
             if (shoppingCartItem == null)
             {

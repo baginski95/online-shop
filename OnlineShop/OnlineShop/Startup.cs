@@ -29,6 +29,9 @@ namespace OnlineShop
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
 
         }
@@ -42,7 +45,8 @@ namespace OnlineShop
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles(); 
+            app.UseStaticFiles();
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
