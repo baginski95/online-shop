@@ -9,6 +9,6 @@ namespace OnlineShop.ViewModels
     public class ShoppingCartViewModel
     {
         public ShoppingCart ShoppingCart { get; set; }
-        public int ShoppingCartTotal { get; set; }
+        public decimal ShoppingCartTotal { get; set; }
     }
 }
