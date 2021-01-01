@@ -18,13 +18,29 @@ namespace OnlineShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        public ViewResult List(string category)
         {
-            var productsListViewModel = new ProductsListViewModel();
-            productsListViewModel.Products = _productRepoitory.AllProducts;
+            IEnumerable<Product> products;
+            string currentCategory;
 
-            productsListViewModel.CurrentCategory = "Premium products";
-            return View(productsListViewModel);
+            if(string.IsNullOrEmpty(category))
+            {
+                products = _productRepoitory.AllProducts.OrderBy(p => p.ProductId);
+                currentCategory = "All products";
+            }
+            else
+            {
+                products = _productRepoitory.AllProducts.Where(p => p.Category.CategoryName == category)
+                    .OrderBy(p => p.ProductId);
+                currentCategory = _categoryRepository.AllCategories.
+                    FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
+
+            return View(new ProductsListViewModel
+            {
+                Products = products,
+                CurrentCategory =currentCategory
+            }); ;
         }
 
         public IActionResult Details(int id)
