@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Models;
+using OnlineShop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,20 @@ namespace OnlineShop.Components
         public ShoppingCartSummary(ShoppingCart shoppingCart)
         {
             _shoppingCart = shoppingCart ;
+        }
+
+        public IViewComponentResult Invoke()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+
+            var shoppingCartViewModel = new ShoppingCartViewModel
+            {
+                ShoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+
+            };
+            return View(shoppingCartViewModel);
         }
     }
 }
